@@ -8,6 +8,9 @@ import java.util.Map;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.servlet.ModelAndView;
+
+import com.icia.thymeleafprj01.dto.ProductDto;
 
 import lombok.extern.slf4j.Slf4j;
 
@@ -43,6 +46,36 @@ public class HomeController {
 		return "second";
 	}
 	
+	@GetMapping("third")
+	public ModelAndView third() {
+		log.info("third()");
+		
+		ModelAndView mv = new ModelAndView();
+		mv.setViewName("third");
+		
+		// Dto에 데이터 담기
+		
+		ProductDto pdto1 = new ProductDto();
+		pdto1.setPname("세탁기");
+		pdto1.setBrand("삼성");
+		pdto1.setPrice(450000);
+		pdto1.setAmount(10);
+		
+		mv.addObject("prod1", pdto1);
+		
+		ProductDto pdto2 = new ProductDto();
+		pdto2.setPname("냉장고");
+		pdto2.setBrand("LG");
+		pdto2.setPrice(850000);
+		pdto2.setAmount(10);
+		
+		mv.addObject("prod2", pdto2);
+		
+		// 자바스크립트로 넘기는 데이터
+		mv.addObject("msg", "경고창에 출력할 내용");
+		
+		return mv;
+	}
 	
 	
 }// class end
