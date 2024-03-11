@@ -16,7 +16,7 @@ JSP를 위한 설정
 	- tomcat-embed-jasper
 	- jstl
 2. views 폴더 생성
-	scr > main > webapp > WEB-INF > views
+	src > main > webapp > WEB-INF > views
 3. application.propertiesS(view resolver)
 	spring.mvc.view.prefix=/WEB-INF/views/
 	spring.mvc.view.suffix=.jsp
