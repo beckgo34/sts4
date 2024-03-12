@@ -68,6 +68,26 @@ Thymeleaf 제어용 태그
 		th:switch="${값 또는 수식}"
 		th:case="값"
 		
+	- th:each - for문에 해당하는 제어 속성. for(변수 : 리스트)
+		<th:block th:each="var:${list}">
+		
+		status : 반복 상태의 정보를 가지고 있는 상태 객체.
+		<th:block th:each="var,status:${list}"
+		th:text="${status.xxx}"
+		- index : 반복 순번(항목 번호). 0부터 시작
+		- count : 반복 횟수. 1부터 시작
+		- odd : 홀수번째 반복. 결과 true/false
+		- even : 짝수번째 반복. 결과 true/false
+		- first : 첫번째 행. 결과 true/false
+		- last : 마지막 행. 결과 true/false
+		- size : 리스트 학목의 개수(총 반복 횟수)
+		- current : 현재 반복이 수행되는 요소
+		
+	※ 참고) List와 Object의 null 체크 함수
+		- List : ${#lists.isEmpty(list)}
+		- Object(dto 등) : ${#object.isNull(object)}
+			
+	
 
 Thymeleaf 연산자 처리
 {, } 내에서 연산식을 만들어 사용할 수 있음

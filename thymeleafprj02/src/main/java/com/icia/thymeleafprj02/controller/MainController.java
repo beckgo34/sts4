@@ -1,6 +1,8 @@
 package com.icia.thymeleafprj02.controller;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -56,6 +58,16 @@ public class MainController {
 		model.addAttribute("mid", "user"); // 로그인을 했다 치고
 		
 		model.addAttribute("age", 48);
+		
+		// List 전송
+		List<String> cafeMenus = new ArrayList<>();
+		cafeMenus.add("아메리카노");
+		cafeMenus.add("카페라떼");
+		cafeMenus.add("카페모카");
+		cafeMenus.add("에스프레소");
+		cafeMenus.add("녹차");
+		
+		model.addAttribute("menus", cafeMenus);
 		
 		return "third";
 	}

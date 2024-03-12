@@ -24,6 +24,36 @@
 		<p th:case="3">당신은 30대입니다</p>
 		<p th:case="4">당신은 40대입니다</p>
 	</th:block>
+	<hr>
+	<h2>th:each</h2>
+	<h3>카페 메뉴판</h3>
+	<table border="1">
+		<tr>
+			<th>번호</th>
+			<th>메뉴명</th>
+		</tr>
+		<th:block th:if="${#lists.isEmpty(menus)}">
+			<tr>
+				<td colspan="2">출력할 메뉴가 없습니다</td>
+			</tr>
+		</th:block>
+		<th:block th:unless="${#lists.isEmpty(menus)}">
+			<th:block th:each="item,status:${menus}">
+				<th:block th:if="${status.first}">
+				<tr style="color:red;">
+					<td th:text="${status.count}"></td>
+					<td th:text="${item}"></td>
+				</tr>
+				</th:block> 
+				<th:block th:unless="${status.first}">
+			<tr>
+				<td th:text="${status.count}"></td>
+				<td th:text="${item}"></td>
+			</tr>
+				</th:block>
+			</th:block>
+		</th:block>
+	</table>
 </section>
 <footer th:replace="~{fragments::footer}"></footer>
 </body>
