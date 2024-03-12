@@ -49,6 +49,17 @@ public class MainController {
 		return "redirect:/";
 	}
 	
+	@GetMapping("third")
+	public String third(Model model) {
+		log.info("third()");
+		
+		model.addAttribute("mid", "user"); // 로그인을 했다 치고
+		
+		model.addAttribute("age", 48);
+		
+		return "third";
+	}
+	
 	
 	
 	
