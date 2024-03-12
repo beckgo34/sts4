@@ -48,8 +48,18 @@ Front-end(html)에서 Controller로 데이터 전송
 	3) Form 전송(따로 제공되는 방식은 없음)
 		th:action="@{url}"
 	
+Thymeleaf 제어용 태그
+	<th:block> - 제어 요소를 담기 위한 태그.
+		조건식, 반복식 등을 작성할 떄 사용
+		상위 요소가 지정되 않은 객체의 출력에 활용.
+		<th:block th:object="${dto}">
 	
-	
+	제어 속성		
+	- th:if - if문에 해당하는 속성. 조건식의 값이 true일 때 동작.
+	- th:unless - if문의 else에 해당하는 속성. 조건식의 값이 false일 때 동작.
+		java의 if-else처럼 사용할 경우 같은 조건식을 사용.
+		
+		
 	
 	
 	
