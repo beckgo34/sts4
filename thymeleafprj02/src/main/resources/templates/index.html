@@ -18,7 +18,7 @@
 <section>
 	<h2>첫 페이지</h2>
 	<p>Spring Boot Project start~~</p>
-	<a th:href="@{second}">[전송과 이동]</a>
+	<a th:href="@{second(data1='한글데이터', data2=100)}">[전송과 이동]</a>
 	<div th:insert="~{now.html}"></div>
 </section>
 <footer th:replace="~{fragments::footer}"></footer>
