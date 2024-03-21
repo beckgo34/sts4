@@ -69,7 +69,13 @@ public class MemberController {
 		return view;
 	}
 	
-	
+	// 메일 인증 메핑 메소드
+	@GetMapping("authUser")
+	public String authUser() {
+		log.info("authUser()");
+		
+		return "authUser";
+	}
 	
 	
 	
