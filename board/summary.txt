@@ -10,3 +10,18 @@ DTO 작성하기
 	DB 테이블(또는 view)의 컬럼과 같은 변수로 구성.
 	
 	
+	
+Id 중복 체크 처리
+	비동기통신 방식으로 - jQuery의 ajax 
+	Ajax(Asynchronous JavaScript And XML)	
+s	
+	동기(Synchronous) 통신 방식 - get, post
+		페이지가 변경되는 방식
+	비동기(Asynchronous) 통신 방식 (RESTful)
+		페이지가 변경되지 않는 방식(한 문서의 일부분이 변경되는 형태)(페이지 안의 데이터만 변경)	
+		
+	 Ajax를 사용할 경우 Controller의 처리가 필요.
+	 
+	 1) RestController 어노테이션 활용
+	 2) 일반 controller의 메소드에 ResponseBody 어노테이션 활용.
+	 

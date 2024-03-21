@@ -39,6 +39,37 @@ public class MemberController {
 		log.info("loginProc()");
 		
 		return mServ.loginProc(member, session, rttr);
-		
 	}
+	
+	@GetMapping("joinForm")
+	public String joinForm() {
+		log.info("joinForm()");
+		
+		return "joinForm";
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 } // class end

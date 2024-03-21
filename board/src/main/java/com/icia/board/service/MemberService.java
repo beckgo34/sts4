@@ -31,7 +31,7 @@ public class MemberService {
 			if(encPwd.equals(member.getM_pwd())) {
 				// 로그인 성공!
 				member = mDao.selectMember(member.getM_id());
-				// 세션에 로그인한 회워느이 정보를 저장
+				// 세션에 로그인한 회원의 정보를 저장
 				session.setAttribute("member", member);
 				// 로그인 성공 시 이동할 화면(view)
 				view = "redirect:boardList?pageNum=1";
