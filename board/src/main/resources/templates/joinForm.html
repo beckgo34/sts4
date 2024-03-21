@@ -79,9 +79,19 @@
 			data: sendObject,
 			success: (res) => {
 				console.log(res);
+				if(res == "ok"){
+					alert("사용 가능한 아이디입니다.");
+					ck = true;
+				}else{
+					alert("중복된 아이디입니다.");
+					ck = false;
+					$("#mid").val(""); // 아이디 지우기
+					$("#mid").focus();
+				}
 			},
 			error: (err) => {
 				console.log(err);
+				ck = false;
 			}
 		});
 		
