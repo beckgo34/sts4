@@ -96,6 +96,29 @@
 		});
 		
 	}
+	
+	function check(){
+		// id 중복체크 여부 확인
+		if(ck == false){
+			alert("아이디 중복 확인을 해주세요");
+			return false;
+		}
+		
+		// form 태그의 내용 가져오기
+		const jfrm = document.jForm;
+		console.log(jfrm);
+		
+		let length = jfrm.length - 1;
+		for(let i = 0; i < length; i++){
+			if(jfrm[i].value == "" || jfrm[i] == null){
+				alert(`${jfrm[i].title} 입력!`);
+				jfrm[i].focus();
+				return false;
+			}	
+		}
+		
+		return true;
+	}
 </script>
 </html>
 

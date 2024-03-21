@@ -12,5 +12,7 @@ public interface MemberDao {
 	MemberDto selectMember(String mid);
 	// idCheck용 메소드
 	int selectId(String id);
+	// 회원가입 메소드
+	void insertMember(MemberDto member);
 	
 }
