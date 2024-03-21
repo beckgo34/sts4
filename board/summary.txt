@@ -22,6 +22,30 @@ s
 		
 	 Ajax를 사용할 경우 Controller의 처리가 필요.
 	 
-	 1) RestController 어노테이션 활용
-	 2) 일반 controller의 메소드에 ResponseBody 어노테이션 활용.
+	 1) 일반 controller의 메소드에 ResponseBody 어노테이션 활용.
+	 	DispatcherServlet으로 응답을 보내는 것이 아니라 client의
+	 	body 부분에 직접 데이터를 전송.
+	 2) RestController 어노테이션 활용. 메소드에 ResponseBody
+	 	어노테이션을 사용하지 않는다.
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
+	 
 	 
