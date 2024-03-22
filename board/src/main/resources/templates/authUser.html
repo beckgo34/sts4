@@ -6,13 +6,13 @@
 	<script src="js/jquery-3.7.1.min.js"></script>
 	<link rel="stylesheet" href="css/style.css">
 	<script th:inline="javascript">
-        $(function(){
-        	// 받은 코드를 입력하고 전송하는 부분 숨기기
+        $(function() {
+        	//받은 코드를 입력하고 전송하는 부분 숨기기
         	$(".tbmg").hide();
         	
         	$("#sbtn").click(function(){
         		let mid = $("#m_id").val();
-        		let email. = ${"$m_email"}.val();
+        		let email = $("#m_mail").val();
         		if(mid == ""){
         			alert("아이디를 입력하세요.");
         			return;
@@ -22,7 +22,7 @@
         			return;
         		}
         		
-        		let mObj = {"m_id" : mid, "m_email" : email};
+        		let mObj = {"m_id": mid, "m_email": email};
         		console.log(mObj);
         		
         		$.ajax({
@@ -30,18 +30,18 @@
         			type: "post",
         			data: mObj,
         			success: (res) => {
-        				if(res = "ok"){
-        					alert("인증코를 메일로 전송했습니다.");
+        				if(res == "ok"){
+        					alert("인증코드를 메일로 전송했습니다.");
         					$(".tbmg").show();
-        					$("#sbtn").attr("disabled", true);// 전송버튼 비활성화
+        					$("#sbtn").attr("disabled", true);//전송버튼 비활성화
         				}
-        				else{
+        				else {
         					alert("메일 전송에 실패했습니다.");
         				}
         			},
-        			error: (err) =>{
+        			error: (err) => {
         				console.log(err);
-        				alert("메일 전송에 실패했습니다.);
+        				alert("메일 전송에 실패했습니다.");
         			}
         		});
         	});

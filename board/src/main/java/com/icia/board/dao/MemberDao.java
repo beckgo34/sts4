@@ -14,5 +14,7 @@ public interface MemberDao {
 	int selectId(String id);
 	// 회원가입 메소드
 	void insertMember(MemberDto member);
+	// 메일 주소를 가져오는 메소드
+	String selectEmail(String m_id);
 	
 }

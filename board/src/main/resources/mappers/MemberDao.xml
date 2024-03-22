@@ -23,5 +23,8 @@
 		#{m_birth},#{m_addr},#{m_phone}, DEFAULT)
  	</insert>
  	
+ 	<select id="selectEmail" parameterType="String" resultType="String">
+ 		SELECT m_email FROM member WHERE m_id = #{m_id}
+ 	</select>
  			
 </mapper>
