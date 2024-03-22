@@ -26,5 +26,10 @@
  	<select id="selectEmail" parameterType="String" resultType="String">
  		SELECT m_email FROM member WHERE m_id = #{m_id}
  	</select>
+ 	
+ 	<update id="updatePassword" parameterType="MemberDto">
+ 		UPDATE member SET m_pwd = #{m_pwd}
+ 		WHERE m_id = #{m_id}
+ 	</update>
  			
 </mapper>

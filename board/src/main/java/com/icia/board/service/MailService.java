@@ -51,7 +51,7 @@ public class MailService {
 				key.append((char)(random.nextInt(26) + 65)); // 소문자
 				break;
 			case 2:
-				key.append((char)(random.nextInt(9))); // 숫자
+				key.append((char)(random.nextInt(9) + 48)); // 숫자
 			}
 		}
 		authNum = key.toString();
@@ -99,6 +99,9 @@ public class MailService {
 				emailSender.send(emailFrom); // 메일 전송
 				
 				res = "ok";
+				// 인증코드 확인을 위해 세션에 저장.
+				session.setAttribute("authNum", authNum);
+				session.setAttribute("m_id", member.getM_id());
 			}
 			else {
 				res= "fail";
@@ -109,6 +112,23 @@ public class MailService {
 		}
 		
 		return res;
+	}
+
+	public String codeAuth(String v_code, HttpSession session) {
+		log.info("codeAuth()");
+		
+		String authNum = (String) session.getAttribute("authNum");
+		String res = null;
+		
+		if(v_code.equals(authNum)) {
+			res = "ok";
+		}else {
+			res = "fail";
+		}
+		
+		session.removeAttribute("authNum");
+		
+		return null;
 	}
 	
 	

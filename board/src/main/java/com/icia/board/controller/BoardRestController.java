@@ -41,6 +41,16 @@ public class BoardRestController {
 		return res;
 	}
 	
+	//비밀번호 변경 코드 인증
+	@PostMapping("codeAuth")
+	public String codeAuth(@RequestParam("v_code") String v_code,
+							HttpSession session) {
+		log.info("codeAuth()");
+		
+		String res = mailServ.codeAuth(v_code, session);
+		
+		return res;
+	}
 	
 	
 	

@@ -16,5 +16,7 @@ public interface MemberDao {
 	void insertMember(MemberDto member);
 	// 메일 주소를 가져오는 메소드
 	String selectEmail(String m_id);
+	// 비밀번호 변경 메소드
+	void updatePassword(MemberDto member);
 	
 }

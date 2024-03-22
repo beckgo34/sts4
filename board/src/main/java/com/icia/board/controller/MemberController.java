@@ -77,6 +77,26 @@ public class MemberController {
 		return "authUser";
 	}
 	
+	// 비밀번호 변경페이지 이동
+	@GetMapping("pwdChange")
+	public String pwdChange() {
+		log.info("pwdChange()");
+		
+		return "pwdChange";
+	}
+	
+	
+	@PostMapping("pwdChangeProc")
+	public String pwdChangeProc(MemberDto member,
+								HttpSession session,
+								RedirectAttributes rttr) {
+		log.info("pwdChangeProc()");
+		
+		String view = mServ.pwdChangeProc(member, session, rttr);
+		
+		return view;
+	}
+	
 	
 	
 	

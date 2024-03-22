@@ -102,8 +102,35 @@ public class MemberService {
 		return view;
 	}
 	
-	
-	
+	// 비밀번호 변경
+	public String pwdChangeProc(MemberDto member,
+								HttpSession session,
+								RedirectAttributes rttr) {
+		log.info("pwdChangeProc()");
+		String view = null;
+		String msg = null;
+		
+		String m_id = (String) session.getAttribute("m_id");
+		String encPwd = pEncoder.encode(member.getM_pwd());		
+		
+		if(m_id != null) {
+			member.setM_id(m_id);
+			member.setM_pwd(encPwd);
+			
+			try {
+				mDao.updatePassword(member);
+				msg = "비밀번호 변경 성공";
+				view = "redirect:loginFrom";
+			}catch (Exception e) {
+				e.printStackTrace();
+				msg = "비밀번호 변경 실패";
+				view = "redirect:pwdChange";
+			}
+		}
+		rttr.addAttribute("msg", msg);
+		
+		return view;
+	}
 	
 	
 	
