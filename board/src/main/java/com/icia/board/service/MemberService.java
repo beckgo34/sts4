@@ -127,7 +127,7 @@ public class MemberService {
 				view = "redirect:pwdChange";
 			}
 		}
-		rttr.addAttribute("msg", msg);
+		rttr.addFlashAttribute("msg", msg);
 		
 		return view;
 	}

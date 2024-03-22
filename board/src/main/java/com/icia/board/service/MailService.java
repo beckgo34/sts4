@@ -128,7 +128,7 @@ public class MailService {
 		
 		session.removeAttribute("authNum");
 		
-		return null;
+		return res;
 	}
 	
 	
