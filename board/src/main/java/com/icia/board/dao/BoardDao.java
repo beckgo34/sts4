@@ -13,4 +13,6 @@ public interface BoardDao {
 	List<BoardDto> selectBoardList(SearchDto sdto);
 	// 전체 게시글 개수 구하는 메소드
 	int selectBoardCnt(SearchDto sdto);
+	// 게시글 내용 저장 메소드
+	void insertBoard(BoardDto board);
 }

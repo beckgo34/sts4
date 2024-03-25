@@ -4,10 +4,16 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.TransactionDefinition;
+import org.springframework.transaction.TransactionStatus;
 import org.springframework.ui.Model;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.icia.board.config.util.PagingUtil;
 import com.icia.board.dao.BoardDao;
+import com.icia.board.dao.MemberDao;
 import com.icia.board.dto.BoardDto;
 import com.icia.board.dto.SearchDto;
 
@@ -19,6 +25,14 @@ import lombok.extern.slf4j.Slf4j;
 public class BoardService {
 	@Autowired
 	private BoardDao bDao;
+	@Autowired
+	private MemberDao mDao;  // 회원 point 정보 변경에 사용
+	
+	// transaction 관련
+	@Autowired
+	private PlatformTransactionManager manager;
+	@Autowired
+	private TransactionDefinition difinition;
 	
 	private int lcnt = 10; // 한 화면(페이지)에 보여질 게시글 개수
 	
@@ -83,7 +97,44 @@ public class BoardService {
 		return pageHtml;
 	}
 	
-	
+	// 게시글, 파일 저장 및 회원 정보(point) 변경
+	public String boardWrite(List<MultipartFile> files,
+							 BoardDto board,
+							 HttpSession session,
+							 RedirectAttributes rttr) {
+		log.info("boardWrite()");
+		
+		// 트랜젝션 상태 처리 객체
+		TransactionStatus status = manager.getTransaction(difinition);
+		
+		String view = null;
+		String msg = null;
+		
+		try {
+			// 게시글 저장
+			bDao.insertBoard(board);
+			log.info("b_num: {}", board.getB_num());
+			
+			// 파일 저장
+			
+			// 작성자의 point 수정
+			
+			// commit 수행
+			manager.commit(status);
+			view = "redirect:boardList?pageNum=1";
+			msg = "작성 성공";
+		}catch (Exception e) {
+			e.printStackTrace();
+			// rollback 수행
+			manager.rollback(status);
+			view = "redirect:writeForm";
+			msg = "작성 실패";
+		}
+		
+		rttr.addFlashAttribute("msg", msg);
+		
+		return view;
+	}
 	
 	
 	

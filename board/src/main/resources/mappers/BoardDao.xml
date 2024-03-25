@@ -19,5 +19,13 @@
 			WHERE ${colname} LIKE CONCAT('%',#{keyword},'%')
 		</if>
 		</select>
-
+		
+		<insert id="insertBoard" parameterType="BoardDto"
+			useGeneratedKeys="true" keyProperty="b_num">
+			<selectKey keyProperty="b_num" resultType="Integer" order="AFTER">
+				SELECT LAST_INSERT_ID()
+			</selectKey>
+			INSERT INTO board
+			VALUES(NULL, #{b_title}, #{b_contents}, #{b_id}, DEFAILT, DEFAILT)
+		</insert>
 </mapper>
