@@ -135,7 +135,7 @@ public class MemberService {
 	public String logout(HttpSession session, 
 						 RedirectAttributes rttr) {
 		log.info("logout()");
-		
+		rttr.addFlashAttribute("msg", "로그아웃되었습니다.");
 		session.invalidate();
 		
 		return "redirect:/";
