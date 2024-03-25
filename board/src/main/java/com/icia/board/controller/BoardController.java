@@ -25,6 +25,7 @@ public class BoardController {
 		log.info("boardList()");
 		
 		String view = bServ.getBoardList(sdto, session, model);
+//		String view = "boardList";
 		
 		return view; 
 	}
