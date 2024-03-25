@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.ui.Model;
 
+import com.icia.board.config.util.PagingUtil;
 import com.icia.board.dao.BoardDao;
 import com.icia.board.dto.BoardDto;
 import com.icia.board.dto.SearchDto;
@@ -39,12 +40,42 @@ public class BoardService {
 		model.addAttribute("bList", bList);
 		
 		// 페이징 처리
-		
+		sdto.setPageNum(num);
+		String pageHtml = getPaging(sdto);
+		model.addAttribute("paging", pageHtml);
 		
 		// 페이지 관련 내용 세션에 저장
 		
 		return view;
 	}
+
+	private String getPaging(SearchDto sdto) {
+		log.info("getPaging()");
+		
+		String pageHtml = null;
+		
+		// 전체 게시글 개수
+		int maxNum = bDao.selectBoardCnt(sdto);
+		
+		int pageCnt = 3; // 페이지에서 보여질 페이지 번호 개수
+		
+		String listName = "boardList?";
+		if(sdto.getColname() != null) {
+			// 검색 기능을 사용한 경우
+			listName += "colname=" + sdto.getColname()
+					 + "&keyword=" + sdto.getKeyword() +"&";
+			// <a href='/boardList?colname=b_tiltle&keyword=3&pageNum=1'>
+		}
+		
+		PagingUtil paging = new PagingUtil(maxNum, sdto.getPageNum(),
+											sdto.getListCnt(),pageCnt,
+											listName);
+		
+		pageHtml = paging.makePaging();
+		
+		return pageHtml;
+	}
+	
 	
 	
 	

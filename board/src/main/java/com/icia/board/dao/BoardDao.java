@@ -11,4 +11,6 @@ import com.icia.board.dto.SearchDto;
 public interface BoardDao {
 	// 게시글 목록 가져오는 메소드
 	List<BoardDto> selectBoardList(SearchDto sdto);
+	// 전체 게시글 개수 구하는 메소드
+	int selectBoardCnt(SearchDto sdto);
 }
