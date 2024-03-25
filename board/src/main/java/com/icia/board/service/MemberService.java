@@ -131,6 +131,15 @@ public class MemberService {
 		
 		return view;
 	}
+
+	public String logout(HttpSession session, 
+						 RedirectAttributes rttr) {
+		log.info("logout()");
+		
+		session.invalidate();
+		
+		return "redirect:/";
+	}
 	
 	
 	

@@ -30,6 +30,12 @@ public class BoardController {
 		return view; 
 	}
 	
+	@GetMapping("writeForm")
+	public String writeForm() {
+		log.info("writeForm()");
+		
+		return "writeForm";
+	}
 	
 	
 	
