@@ -45,6 +45,13 @@ public class BoardService {
 		model.addAttribute("paging", pageHtml);
 		
 		// 페이지 관련 내용 세션에 저장
+		if(sdto.getColname() != null) {
+			session.setAttribute("sdto", sdto);
+		} else {
+			session.removeAttribute("sdto"); // 검색을 안한 목록을 위해 삭제.
+		}
+		// 별개로 페이지 번호도 저장
+		session.setAttribute("pageNum", num);
 		
 		return view;
 	}

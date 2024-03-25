@@ -14,7 +14,7 @@
 		
 		<select id="selectBoardCnt" parameterType="SearchDto"
 			resultType="Integer">
-		SELECT count(*) FROM blist;
+		SELECT count(*) FROM blist
 		<if test="colname != null and colname != ''">
 			WHERE ${colname} LIKE CONCAT('%',#{keyword},'%')
 		</if>
