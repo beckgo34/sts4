@@ -26,6 +26,6 @@
 				SELECT LAST_INSERT_ID()
 			</selectKey>
 			INSERT INTO board
-			VALUES(NULL, #{b_title}, #{b_contents}, #{b_id}, DEFAILT, DEFAILT)
+			VALUES(NULL, #{b_title}, #{b_contents}, #{b_id}, DEFAULT, DEFAULT)
 		</insert>
 </mapper>

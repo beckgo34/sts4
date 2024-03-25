@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.icia.board.dao.BoardDao;
+import com.icia.board.dto.BoardDto;
 import com.icia.board.dto.SearchDto;
 import com.icia.board.service.BoardService;
 
@@ -46,14 +47,12 @@ public class BoardController {
 	
 	@PostMapping("writeProc")
 	public String writeProc(@RequestPart("files") List<MultipartFile> files,
-							BoardDao board,
+							BoardDto board,
 							HttpSession session,
 							RedirectAttributes rttr) {
 		log.info("writeProc()");
 		
-		String view = null;
-		
-		
+		String view = bServ.boardWrite(files, board, session, rttr);		
 		
 		return view;
 	}

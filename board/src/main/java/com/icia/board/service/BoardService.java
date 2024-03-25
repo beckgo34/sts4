@@ -32,7 +32,7 @@ public class BoardService {
 	@Autowired
 	private PlatformTransactionManager manager;
 	@Autowired
-	private TransactionDefinition difinition;
+	private TransactionDefinition definition;
 	
 	private int lcnt = 10; // 한 화면(페이지)에 보여질 게시글 개수
 	
@@ -105,7 +105,7 @@ public class BoardService {
 		log.info("boardWrite()");
 		
 		// 트랜젝션 상태 처리 객체
-		TransactionStatus status = manager.getTransaction(difinition);
+		TransactionStatus status = manager.getTransaction(definition);
 		
 		String view = null;
 		String msg = null;
