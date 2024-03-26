@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.annotations.Mapper;
 
 import com.icia.board.dto.BoardDto;
+import com.icia.board.dto.BoardFileDto;
 import com.icia.board.dto.SearchDto;
 
 @Mapper
@@ -15,4 +16,6 @@ public interface BoardDao {
 	int selectBoardCnt(SearchDto sdto);
 	// 게시글 내용 저장 메소드
 	void insertBoard(BoardDto board);
+	// 파일 정보 저장 메소드
+	void insertFile(BoardFileDto bfile);
 }
