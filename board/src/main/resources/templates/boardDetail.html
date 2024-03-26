@@ -112,7 +112,11 @@
             </form>
             <!-- 댓글 출력 부분 -->
             <div id="rSpace">
-                
+                <th:block th:each="ritem:${rlist}">
+                	<div class="t_content p-20 re" th:text="${ritem.r_id}"></div>
+                	<div class="t_content p-50 re" th:text="${ritem.r_contents}"></div>
+                	<div class="t_content p-30 re" th:text="${ritem.r_date}"></div>
+                </th:block>
             </div>
         </div>
     </div>
