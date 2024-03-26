@@ -17,6 +17,7 @@ import com.icia.board.dao.BoardDao;
 import com.icia.board.dao.MemberDao;
 import com.icia.board.dto.BoardDto;
 import com.icia.board.dto.BoardFileDto;
+import com.icia.board.dto.ReplyDto;
 import com.icia.board.dto.SearchDto;
 
 import jakarta.servlet.http.HttpSession;
@@ -177,6 +178,23 @@ public class BoardService {
 			// 파일 정보 저장
 			bDao.insertFile(bfd);
 		}
+	}
+
+	public String getBoard(int b_num, 
+						Model model) {
+		log.info("getBoard()");
+		
+		// 게시글 번호(b_num)로 게시물 가져오기
+		BoardDto board = bDao.selectBoard(b_num);
+		model.addAttribute("board", board);
+		
+		// 파일 목록 가져오기
+		List<BoardFileDto> bfList = bDao.selectFileList(b_num);
+		model.addAttribute("bfList", bfList);
+		// 댓글 목록 가져오기
+		List<ReplyDto> rList = bDao.selectReplyDto(b_num);
+		model.addAttribute("rlist", rList);
+		return "boardDetail";
 	}
 	
 	
