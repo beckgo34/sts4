@@ -18,5 +18,7 @@ public interface MemberDao {
 	String selectEmail(String m_id);
 	// 비밀번호 변경 메소드
 	void updatePassword(MemberDto member);
+	// 회원 point 수정 메소드
+	void updateMemberPoint(MemberDto member);
 	
 }

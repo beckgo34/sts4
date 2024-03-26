@@ -1,8 +1,11 @@
 package com.icia.board.controller;
 
+import java.io.IOException;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.Resource;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +17,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.icia.board.dao.BoardDao;
 import com.icia.board.dto.BoardDto;
+import com.icia.board.dto.BoardFileDto;
 import com.icia.board.dto.SearchDto;
 import com.icia.board.service.BoardService;
 
@@ -68,6 +72,17 @@ public class BoardController {
 		return view;
 	}
 	
+	// 파일 다운로드
+	@GetMapping("download")
+	public ResponseEntity<Resource> fileDownload(BoardFileDto bfile,
+												 HttpSession session) 
+												 throws IOException{
+		log.info("fileDownLoad()");
+		
+		ResponseEntity<Resource> resp = bServ.fileDownload(bfile, session);
+		
+		return resp;
+	}
 	
 	
 	

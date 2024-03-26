@@ -25,4 +25,9 @@ public interface BoardDao {
 	List<BoardFileDto> selectFileList(int b_num);
 	// 댓글 목록 가져오는 메소드
 	List<ReplyDto> selectReplyDto(int b_num);
+	// 댓글 저장 메소드
+	void insertReply(ReplyDto reply);
+	// 댓글 보이는 메소드
+	ReplyDto selectReply(int r_num);
+	
 }

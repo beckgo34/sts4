@@ -47,4 +47,28 @@
 			resultType="ReplyDto">
 			SELECT * FROM rlist WHERE r_bnum=#{b_num}	
 		</select>
+		
+		<insert id="insertReply" parameterType="ReplyDto"
+			useGeneratedKeys="true" keyProperty="r_num">
+			<selectKey keyProperty="r_num" resultType="Integer" order="AFTER">
+				SELECT LAST_INSERT_ID()
+			</selectKey>
+			INSERT INTO reply
+			VALUES(NULL, #{r_bnum}, #{r_contents}, #{r_id}, DEFAULT)
+		</insert>
+		
+		<select id="selectReply" parameterType="Integer" resultType="ReplyDto">
+			SELECT * FROM rlist WHERE r_num=#{r_num}
+		</select>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 </mapper>
