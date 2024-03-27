@@ -144,27 +144,24 @@ Transaction(트랜젝션) 처리
 댓글 처리
 	serialize() : 데이터 직렬화 함수.
 		form의 input 태그로 받는 데이터를 직렬화 하여 전송할 수 있는 형태로 변환.
-		
-
-
-
-
-
 
 게시글 수정/삭제
-
-
-
-접근 제어
-
-에러 페이지 처리
-
 
 브라우저의 뒤로가기 버튼을 활요하는 방법
 	BOM(Browser Object Model) : 자바스크립트에서 브라우저의 제공 기능을
 		활용하기 위해 생성하는 객체 모델.
 		뒤로가기 버튼
 		-[window.]history.back();
+
+에러 페이지 처리
+	에러 페이지의 template 파일명 
+	- page not found(404) -> 404.html
+	- server error(500) -> 500.html
+
+접근 제어
+
+
+
 
 
 
