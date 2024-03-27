@@ -184,5 +184,38 @@
         	}
         	location.href = url;
         });
+        
+        // 글수정 및 삭제 버튼 처리(작성자만 수정 또는 삭제가 가능하도록 처리)
+        // 수정/삭제 버튼 숨기기
+        $("#upbtn").hide();
+        $("#delbtn").hide();
+        let mid = [[${session.member.m_id}]]; // 로그인한 id
+        let bid = [[${board.b_id}]]; // 작성자 id
+        if(mid == bid){
+        	$("#upbtn").show();
+        	$("#delbtn").show();
+        }
+        
+        $("#upbtn").click(function(){
+        	let bnum = [[${board.b_num}]];
+        	location.href = `/updateForm?b_num=${bnum}`;
+        });
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
 </script>
 </html>

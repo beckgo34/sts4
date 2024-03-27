@@ -262,6 +262,79 @@ public class BoardService {
 						"attachment; filename="+ fileName)
 				.body(fResource);
 	}
+
+	
+	public String updateBoard(int b_num, Model model) {
+		log.info("updateBoard()");
+		// 게시글 내용 가져오기
+		BoardDto board = bDao.selectBoard(b_num);
+		// 파일목록 가져오기
+		List<BoardFileDto> fList = bDao.selectFileList(b_num);
+		// model에 담기
+		model.addAttribute("board", board);
+		model.addAttribute("fList", fList);
+		
+		return "updateForm";
+	}
+
+	public List<BoardFileDto> delFile(BoardFileDto bFile, 
+									  HttpSession session) {
+		log.info("delFile()");
+		
+		List<BoardFileDto> fList = null;
+		
+		String realPath = session.getServletContext().getRealPath("/");
+		realPath += "upload/" + bFile.getBf_sysname();
+		
+		try {
+			File file = new File(realPath);
+			if(file.exists()) {
+				if(file.delete()) {
+					// 해당 파일 정보 삭제
+					bDao.deleteFile(bFile.getBf_sysname());
+					// 나머지 파일 목록 다시 가져오기
+					fList = bDao.selectFileList(bFile.getBf_bnum());
+				}
+			}
+			
+		}catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return fList;
+	}
+
+	public String BoardUpdate(List<MultipartFile> files,
+							  BoardDto board, 
+							  HttpSession session, 
+							  RedirectAttributes rttr) {
+		log.info("BoardUpdate()");
+		
+		TransactionStatus status = manager.getTransaction(definition);
+		
+		String view = null;
+		String msg = null;
+		
+		try {
+			bDao.updateBoard(board);
+			if(!files.get(0).isEmpty()) {
+				fileUpload(files, session, board.getB_num());
+			}
+			
+			manager.commit(status);
+			view = "redirect:boardDetail?b_num=" + board.getB_num();
+			msg = "수정 성공";
+		}catch (Exception e) {
+			e.printStackTrace();
+			manager.rollback(status);
+			view = "redirect:updateForm?b_num=" + board.getB_num();
+			msg = "수정 실패";
+		}
+		
+		rttr.addFlashAttribute("msg", msg);
+		
+		return view;
+	}
 	
 	
 	

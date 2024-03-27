@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RequestPart;
+import org.springframework.web.context.annotation.RequestScope;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
@@ -84,8 +85,26 @@ public class BoardController {
 		return resp;
 	}
 	
+	@GetMapping("updateForm")
+	public String updateForm(@RequestParam("b_num") int b_num, Model model) {
+		log.info("updateForm()");
+		String view = bServ.updateBoard(b_num, model);
+		
+		return view;
+	}
 	
-	
+	// 게시글 업데이트
+	@PostMapping("updateProc")
+	public String updateProc(@RequestPart("files") List<MultipartFile> files,
+							 BoardDto board,
+							 HttpSession session,
+							 RedirectAttributes rttr) {
+		log.info("updateProc()");
+		
+		String view = bServ.BoardUpdate(files, board, session, rttr);
+		
+		return view;
+	}
 	
 	
 	
