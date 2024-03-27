@@ -23,7 +23,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import com.icia.board.config.util.PagingUtil;
 import com.icia.board.dao.BoardDao;
 import com.icia.board.dao.MemberDao;
 import com.icia.board.dto.BoardDto;
@@ -31,6 +30,7 @@ import com.icia.board.dto.BoardFileDto;
 import com.icia.board.dto.MemberDto;
 import com.icia.board.dto.ReplyDto;
 import com.icia.board.dto.SearchDto;
+import com.icia.board.util.PagingUtil;
 
 import jakarta.servlet.http.HttpSession;
 import lombok.extern.slf4j.Slf4j;

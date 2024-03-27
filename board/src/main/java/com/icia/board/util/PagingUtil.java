@@ -1,4 +1,4 @@
-package com.icia.board.config.util;
+package com.icia.board.util;
 
 import lombok.AllArgsConstructor;
 
