@@ -23,7 +23,12 @@
     <div class="content">
         <div class="write-form">
             <h2>서버에 문제가 있습니다.</h2>
-            
+            <p th:text="'경로 : '+${path}"></p>
+            <p th:text="'상태 : ' +${status}"></p>
+            <p th:text="'발생시간 : ' +${timestamp}"></p>
+            <p th:text="'오류 : ' +${error}"></p>
+            <p th:text="'예외사항 : '+${exception}"></p>
+            <p th:text="'메시지 : '+${message}"></p>
         </div>
     </div>
 </section>

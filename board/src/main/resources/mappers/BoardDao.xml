@@ -3,7 +3,7 @@
 
 <mapper namespace="com.icia.board.dao.BoardDao">
 	
-	<select id="selectBoardList" parameterType="SearchDto"
+	<select id="selectBoardLista" parameterType="SearchDto"
 		resultType="BoardDto">
 		SELECT * FROM blist
 		<if test="colname != null and colname != ''">

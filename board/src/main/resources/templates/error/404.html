@@ -24,8 +24,9 @@
         <div class="write-form">
             <h2>요청하신 페이지가 없습니다.</h2>
             <p th:text="'경로 : '+${path}"></p>
-            <p th:text="'경로 : ' +${status}"></p>
-            <p th:text="'경로 : ' +${timestamp}"></p>
+            <p th:text="'상태 : ' +${status}"></p>
+            <p th:text="'발생시간 : ' +${timestamp}"></p>
+            <p th:text="'오류 : ' +${error}"></p>
         </div>
     </div>
 </section>

@@ -158,6 +158,8 @@ Transaction(트랜젝션) 처리
 	- page not found(404) -> 404.html
 	- server error(500) -> 500.html
 
+	400 bad request : 이런 에러는 발생되지 않게 개발해야 한다.
+	
 접근 제어
 
 
