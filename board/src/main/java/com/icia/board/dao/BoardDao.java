@@ -33,5 +33,18 @@ public interface BoardDao {
 	void deleteFile(String bf_sysname);
 	// 게시글 수정 메소드
 	void updateBoard(BoardDto board);
+	// 저장된 파일명 목록 가져오는 메소드
+	List<String> selectFnamList(int b_num);
+	// 파일 목록 삭제 메소드
+	void deleteFiles(int b_num);
+	// 댓글 목록 삭제 메소드
+	void deleteReplys(int b_num);
+	// 게시글 삭제 메소드
+	void deleteBoard(int b_num);
+	
+	
+	
+	
+	
 	
 }

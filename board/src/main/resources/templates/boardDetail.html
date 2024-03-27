@@ -202,7 +202,13 @@
         	location.href = `/updateForm?b_num=${bnum}`;
         });
         
-        
+        $("#delbtn").click(function(){
+        	let con =confirm("게시글을 삭제합니다.");
+        	if(con == true){
+        		let bnum = [[${board.b_num}]];
+        		location.href = `/boardDelete?b_num=${bnum}`;
+        	}
+        });
         
         
         

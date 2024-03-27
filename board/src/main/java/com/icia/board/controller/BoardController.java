@@ -106,7 +106,16 @@ public class BoardController {
 		return view;
 	}
 	
-	
+	@GetMapping("boardDelete")
+	public String boardDelete(@RequestParam("b_num") int b_num,
+							  HttpSession session,
+							  RedirectAttributes rttr) {
+		log.info("boardDelete()");
+		
+		String view = bServ.boardDelete(b_num, session, rttr);
+		
+		return view;
+	}
 	
 	
 	
